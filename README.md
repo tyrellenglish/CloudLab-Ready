@@ -21,5 +21,6 @@ Reasoning:
 - Small, lightweight images
 - Fast builds and installs
 - Easy to deploy and run on CloudLab
+- I chose Python for the API because I am most comfortable with it and it has great support for the rest of the services.
 
 
