@@ -44,6 +44,36 @@ WORKDIR /app
 RUN pip install --no-cache-dir fastapi uvicorn
 COPY ./src /app/src
 EXPOSE 8080
+
+
+
+## Networking
+
+This project uses Docker Compose networking. When the services are started together, Docker Compose automatically creates a default bridge network for the project.
+
+### How the containers communicate
+
+The two services in this project are:
+
+- `api`
+- `worker`
+
+Because both services are started from the same `docker-compose.yml` file, they are placed on the same internal network. This allows them to communicate with one another by service name.
+
+For example, the worker could connect to the API by using the hostname `api` instead of using an IP address.
+
+### Bridge network
+
+A bridge network allows containers in the same Docker Compose project to communicate while staying isolated from unrelated containers.
+
+In this setup:
+- the `api` service is available internally as `api`
+- the `worker` service is available internally as `worker`
+- port `8080` from the API container is mapped to port `8080` on the host machine
+
+### DNS resolution by container name
+
+Docker Compose includes built-in DNS resolution. This means containers can find each other by service name. Instead of using changing IP addresses, the containers can communicate using names like `api` and `worker`, which makes networking easier and more reliable.
 CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8080"]
 
 
