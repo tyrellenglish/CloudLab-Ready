@@ -1,6 +1,6 @@
 
 # CloudLab-Ready
-# Project Deliverable 1 Repo
+# Project Deliverable 2 Repo
 
 Resume: [resume/TyrellEnglish-Resume (2).pdf](resume/TyrellEnglish-Resume (2).pdf)
 
